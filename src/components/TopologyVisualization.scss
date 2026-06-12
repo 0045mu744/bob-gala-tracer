@@ -1,0 +1,151 @@
+.topology-visualization {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+
+  .topology-header {
+    margin-bottom: 2rem;
+    
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #161616;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .topology-subtitle {
+      font-size: 0.875rem;
+      color: #525252;
+      margin: 0;
+    }
+  }
+
+  .topology-flow {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    padding: 1rem 0;
+    gap: 1rem;
+
+    .hop-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 180px;
+      padding: 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      background: #f4f4f4;
+      transition: all 0.3s ease;
+
+      &.pending {
+        opacity: 0.5;
+      }
+
+      &.active {
+        border-color: #0f62fe;
+        background: #edf5ff;
+        box-shadow: 0 0 0 3px rgba(15, 98, 254, 0.1);
+        transform: scale(1.05);
+
+        .hop-icon {
+          background: #0f62fe;
+          color: #ffffff;
+        }
+      }
+
+      &.completed {
+        border-color: #24a148;
+        background: #defbe6;
+
+        .hop-icon {
+          background: #24a148;
+          color: #ffffff;
+        }
+      }
+
+      .hop-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #8d8d8d;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+        transition: all 0.3s ease;
+
+        .hop-number {
+          font-weight: 600;
+          font-size: 1rem;
+        }
+      }
+
+      .hop-content {
+        text-align: center;
+        width: 100%;
+
+        .hop-component {
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: #161616;
+          margin-bottom: 0.25rem;
+          word-break: break-word;
+        }
+
+        .hop-title {
+          font-size: 0.875rem;
+          color: #525252;
+          margin-bottom: 0.5rem;
+          min-height: 2.5rem;
+        }
+
+        .hop-latency {
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: #0f62fe;
+          background: rgba(15, 98, 254, 0.1);
+          padding: 0.25rem 0.5rem;
+          border-radius: 4px;
+          display: inline-block;
+        }
+      }
+    }
+
+    .hop-connector {
+      color: #e0e0e0;
+      transition: color 0.3s ease;
+      flex-shrink: 0;
+
+      &.active,
+      &.completed {
+        color: #0f62fe;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .topology-visualization {
+    padding: 1rem;
+
+    .topology-flow {
+      flex-direction: column;
+      align-items: stretch;
+
+      .hop-node {
+        min-width: 100%;
+      }
+
+      .hop-connector {
+        transform: rotate(90deg);
+        margin: 0.5rem 0;
+      }
+    }
+  }
+}
+
+// Made with Bob

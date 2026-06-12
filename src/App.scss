@@ -1,0 +1,143 @@
+@import '@carbon/react/scss/reset';
+@import '@carbon/react/scss/theme';
+@import '@carbon/react/scss/themes';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f4f4f4;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-size: 1.5rem;
+    color: #525252;
+  }
+
+  .app-header {
+    background: linear-gradient(135deg, #001d6c 0%, #0f62fe 100%);
+    color: #ffffff;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    .header-content {
+      margin-bottom: 1.5rem;
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem 0;
+        letter-spacing: -0.5px;
+      }
+
+      .subtitle {
+        font-size: 1.125rem;
+        margin: 0;
+        opacity: 0.9;
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  }
+
+  .app-main {
+    flex: 1;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+
+    .simulation-section {
+      margin-bottom: 2rem;
+    }
+
+    .results-section {
+      animation: fadeIn 0.5s ease-in;
+    }
+  }
+
+  .app-footer {
+    background: #161616;
+    color: #f4f4f4;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    margin-top: auto;
+
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+      opacity: 0.8;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    .app-header {
+      padding: 1rem;
+
+      .header-content {
+        h1 {
+          font-size: 1.75rem;
+        }
+
+        .subtitle {
+          font-size: 0.875rem;
+        }
+      }
+
+      .header-actions {
+        flex-direction: column;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+
+    .app-main {
+      padding: 1rem;
+    }
+
+    .app-footer {
+      padding: 1rem;
+
+      p {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+// Made with Bob

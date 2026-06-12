@@ -1,0 +1,148 @@
+.hop-details {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+
+  &.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+
+    .empty-state {
+      text-align: center;
+      color: #8d8d8d;
+
+      svg {
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+        margin: 0;
+      }
+    }
+  }
+
+  .hop-details-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+
+    .hop-badge {
+      background: #0f62fe;
+      color: #ffffff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #161616;
+      margin: 0;
+    }
+  }
+
+  .hop-details-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .detail-section {
+      label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #525252;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.5rem;
+      }
+
+      .detail-value {
+        font-size: 0.875rem;
+        color: #161616;
+        line-height: 1.5;
+
+        &.component-path {
+          font-family: 'IBM Plex Mono', monospace;
+          background: #f4f4f4;
+          padding: 0.75rem;
+          border-radius: 4px;
+          border-left: 3px solid #0f62fe;
+        }
+
+        &.operation {
+          display: inline-block;
+          background: #edf5ff;
+          color: #0f62fe;
+          padding: 0.5rem 1rem;
+          border-radius: 4px;
+          font-weight: 600;
+        }
+
+        &.latency {
+          display: inline-block;
+          background: #defbe6;
+          color: #24a148;
+          padding: 0.5rem 1rem;
+          border-radius: 4px;
+          font-weight: 600;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .reasoning {
+      .reasoning-text {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        background: #fff8e1;
+        padding: 1rem;
+        border-radius: 4px;
+        border-left: 3px solid #f1c21b;
+
+        svg {
+          flex-shrink: 0;
+          margin-top: 0.125rem;
+          color: #f1c21b;
+        }
+
+        span {
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hop-details {
+    padding: 1rem;
+
+    .hop-details-content {
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
+
+// Made with Bob
