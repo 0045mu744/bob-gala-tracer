@@ -29,7 +29,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(135deg, $blue-60 0%, $purple-60 100%);
+    background: linear-gradient(135deg, $background-brand 0%, $layer-accent 100%);
     color: $text-on-color;
     padding: $spacing-06;
     border-radius: 8px;
@@ -74,23 +74,23 @@
 
       // Custom progress bar colors
       .progress-blue {
-        --cds-progress-bar-color: #{$blue-60};
+        --cds-progress-bar-color: #{$interactive};
       }
 
       .progress-purple {
-        --cds-progress-bar-color: #{$purple-60};
+        --cds-progress-bar-color: #{$support-info};
       }
 
       .progress-cyan {
-        --cds-progress-bar-color: #{$cyan-50};
+        --cds-progress-bar-color: #{$support-info};
       }
 
       .progress-green {
-        --cds-progress-bar-color: #{$green-50};
+        --cds-progress-bar-color: #{$support-success};
       }
 
       .progress-red {
-        --cds-progress-bar-color: #{$red-60};
+        --cds-progress-bar-color: #{$support-error};
       }
     }
   }
