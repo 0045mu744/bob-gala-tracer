@@ -1,6 +1,12 @@
 # Byte Tracer - IBM FlashSystem I/O Journey Simulator
 
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/0045mu744/bob-gala-tracer)
+
 A sophisticated I/O journey simulator for IBM FlashSystem, inspired by Cisco Packet Tracer. This application provides detailed visualization and analysis of write request flows through FlashSystem infrastructure.
+
+## 🔗 Repository
+
+**GitHub**: [https://github.com/0045mu744/bob-gala-tracer](https://github.com/0045mu744/bob-gala-tracer)
 
 ## 🎯 Overview
 
@@ -36,6 +42,10 @@ RAID5_Group_2 → Pool_Alpha → Volume_Prod01 → FCM_Module_7
 ### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/0045mu744/bob-gala-tracer.git
+cd bob-gala-tracer
+
 # Install dependencies
 npm install
 
@@ -48,6 +58,20 @@ npm run build
 # Preview production build
 npm run preview
 ```
+
+### Sharing with Others
+
+To share this application:
+
+1. **Share the GitHub URL**: `https://github.com/0045mu744/bob-gala-tracer`
+2. **Recipients can clone and run**:
+   ```bash
+   git clone https://github.com/0045mu744/bob-gala-tracer.git
+   cd bob-gala-tracer
+   npm install
+   npm run dev
+   ```
+3. The application will be available at `http://localhost:5173` (or another port if 5173 is in use)
 
 ## 📊 Features
 
