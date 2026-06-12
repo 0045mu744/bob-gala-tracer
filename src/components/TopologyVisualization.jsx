@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Grid, Column, Tile, ProgressIndicator, ProgressStep } from '@carbon/react';
 import { ArrowRight, CheckmarkFilled } from '@carbon/icons-react';
 import './TopologyVisualization.scss';
 
@@ -29,11 +30,15 @@ const TopologyVisualization = ({ hops, currentHop, isAnimating }) => {
   };
 
   return (
-    <div className="topology-visualization">
-      <div className="topology-header">
-        <h3>I/O Journey Path</h3>
-        <p className="topology-subtitle">FlashSystem Write Request Flow</p>
-      </div>
+    <Tile className="topology-visualization">
+      <Grid>
+        <Column sm={4} md={8} lg={16}>
+          <div className="topology-header">
+            <h3>I/O Journey Path</h3>
+            <p className="topology-subtitle">FlashSystem Write Request Flow</p>
+          </div>
+        </Column>
+      </Grid>
       
       <div className="topology-flow">
         {hops.map((hop, index) => (
@@ -61,7 +66,7 @@ const TopologyVisualization = ({ hops, currentHop, isAnimating }) => {
           </React.Fragment>
         ))}
       </div>
-    </div>
+    </Tile>
   );
 };
 

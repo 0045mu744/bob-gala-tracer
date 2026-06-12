@@ -1,14 +1,15 @@
 import React from 'react';
+import { Tile, ProgressBar } from '@carbon/react';
 import { ChartBar } from '@carbon/icons-react';
 import './LatencyBreakdown.scss';
 
 const LatencyBreakdown = ({ latencyBreakdown, totalLatency }) => {
   const layers = [
-    { key: 'host', label: 'Host Layer', color: '#0f62fe' },
-    { key: 'fabric', label: 'Fabric Layer', color: '#8a3ffc' },
-    { key: 'frontend', label: 'Front-End Layer', color: '#33b1ff' },
-    { key: 'cache', label: 'Cache Layer', color: '#24a148' },
-    { key: 'backend', label: 'Back-End Layer', color: '#fa4d56' }
+    { key: 'host', label: 'Host Layer', color: 'blue' },
+    { key: 'fabric', label: 'Fabric Layer', color: 'purple' },
+    { key: 'frontend', label: 'Front-End Layer', color: 'cyan' },
+    { key: 'cache', label: 'Cache Layer', color: 'green' },
+    { key: 'backend', label: 'Back-End Layer', color: 'red' }
   ];
 
   const getPercentage = (value) => {
@@ -16,7 +17,7 @@ const LatencyBreakdown = ({ latencyBreakdown, totalLatency }) => {
   };
 
   return (
-    <div className="latency-breakdown">
+    <Tile className="latency-breakdown">
       <div className="breakdown-header">
         <ChartBar size={24} />
         <h3>Latency Breakdown</h3>
@@ -35,32 +36,30 @@ const LatencyBreakdown = ({ latencyBreakdown, totalLatency }) => {
           return (
             <div key={layer.key} className="breakdown-item">
               <div className="item-header">
-                <span className="item-label">{layer.label}</span>
+                <span className="item-label">{layer.layer}</span>
                 <span className="item-value">{value}ms ({percentage}%)</span>
               </div>
-              <div className="item-bar-container">
-                <div 
-                  className="item-bar" 
-                  style={{ 
-                    width: `${percentage}%`,
-                    backgroundColor: layer.color 
-                  }}
-                />
-              </div>
+              <ProgressBar 
+                label={layer.label}
+                value={parseFloat(percentage)}
+                max={100}
+                hideLabel
+                className={`progress-${layer.color}`}
+              />
             </div>
           );
         })}
       </div>
 
-      <div className="breakdown-insights">
+      <Tile className="breakdown-insights">
         <h4>Key Observations</h4>
         <ul>
           <li>Backend layer contributes the highest latency due to RAID5 parity calculations</li>
           <li>Fabric layer shows moderate latency from network forwarding</li>
           <li>Cache layer has minimal impact with fast lookup operations</li>
         </ul>
-      </div>
-    </div>
+      </Tile>
+    </Tile>
   );
 };
 

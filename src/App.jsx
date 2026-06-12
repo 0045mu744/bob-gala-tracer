@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@carbon/react';
+import { Grid, Column, Button, Loading } from '@carbon/react';
 import { PlayFilled, Reset, Download } from '@carbon/icons-react';
 import { generateSimulation, getSimulationJSON } from './engine/simulationEngine';
 import TopologyVisualization from './components/TopologyVisualization';
@@ -60,45 +60,53 @@ function App() {
   };
 
   if (!simulation) {
-    return <div className="loading">Loading Byte Tracer...</div>;
+    return (
+      <div className="app-loading">
+        <Loading description="Loading Byte Tracer..." withOverlay={false} />
+      </div>
+    );
   }
 
   return (
     <div className="app">
-      <header className="app-header">
-        <div className="header-content">
-          <h1>Byte Tracer</h1>
-          <p className="subtitle">IBM FlashSystem I/O Journey Simulator</p>
-        </div>
-        <div className="header-actions">
-          <Button
-            kind="primary"
-            renderIcon={PlayFilled}
-            onClick={startSimulation}
-            disabled={isAnimating}
-          >
-            {isAnimating ? 'Simulating...' : 'Start Simulation'}
-          </Button>
-          <Button
-            kind="secondary"
-            renderIcon={Reset}
-            onClick={resetSimulation}
-            disabled={isAnimating}
-          >
-            Reset
-          </Button>
-          <Button
-            kind="tertiary"
-            renderIcon={Download}
-            onClick={downloadJSON}
-          >
-            Export JSON
-          </Button>
-        </div>
-      </header>
+      {/* Header Section - Separate Grid */}
+      <Grid className="app-header">
+        <Column sm={4} md={8} lg={16}>
+          <div className="header-content">
+            <h1>Byte Tracer</h1>
+            <p className="subtitle">IBM FlashSystem I/O Journey Simulator</p>
+          </div>
+          <div className="header-actions">
+            <Button
+              kind="primary"
+              renderIcon={PlayFilled}
+              onClick={startSimulation}
+              disabled={isAnimating}
+            >
+              {isAnimating ? 'Simulating...' : 'Start Simulation'}
+            </Button>
+            <Button
+              kind="secondary"
+              renderIcon={Reset}
+              onClick={resetSimulation}
+              disabled={isAnimating}
+            >
+              Reset
+            </Button>
+            <Button
+              kind="tertiary"
+              renderIcon={Download}
+              onClick={downloadJSON}
+            >
+              Export JSON
+            </Button>
+          </div>
+        </Column>
+      </Grid>
 
-      <main className="app-main">
-        <section className="simulation-section">
+      {/* Main Content - Separate Grid */}
+      <Grid className="app-main">
+        <Column sm={4} md={8} lg={16}>
           <TopologyVisualization
             hops={simulation.hops}
             currentHop={currentHop}
@@ -115,10 +123,13 @@ function App() {
           {!isAnimating && currentHop === -1 && (
             <HopDetails hop={null} hopIndex={-1} />
           )}
-        </section>
+        </Column>
+      </Grid>
 
-        {showResults && (
-          <section className="results-section">
+      {/* Results Section - Separate Grid */}
+      {showResults && (
+        <Grid className="app-results">
+          <Column sm={4} md={8} lg={16}>
             <LatencyBreakdown
               latencyBreakdown={simulation.latency_breakdown}
               totalLatency={simulation.total_latency_ms}
@@ -127,16 +138,19 @@ function App() {
             <AIInsights insights={simulation.ai_insights} />
 
             <FinalNarrative narrative={simulation.final_narrative} />
-          </section>
-        )}
-      </main>
+          </Column>
+        </Grid>
+      )}
 
-      <footer className="app-footer">
-        <p>
-          Powered by IBM Bob AI Reasoning Engine | 
-          Simulating {simulation.topology.length} components across {simulation.hops.length} hops
-        </p>
-      </footer>
+      {/* Footer Section - Separate Grid */}
+      <Grid className="app-footer">
+        <Column sm={4} md={8} lg={16}>
+          <p>
+            Powered by IBM Bob AI Reasoning Engine | 
+            Simulating {simulation.topology.length} components across {simulation.hops.length} hops
+          </p>
+        </Column>
+      </Grid>
     </div>
   );
 }

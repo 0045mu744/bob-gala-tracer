@@ -1,10 +1,11 @@
 import React from 'react';
+import { Tile } from '@carbon/react';
 import { DocumentView } from '@carbon/icons-react';
 import './FinalNarrative.scss';
 
 const FinalNarrative = ({ narrative }) => {
   return (
-    <div className="final-narrative">
+    <Tile className="final-narrative">
       <div className="narrative-header">
         <DocumentView size={24} />
         <h3>Complete Journey Narrative</h3>
@@ -21,7 +22,7 @@ const FinalNarrative = ({ narrative }) => {
       <div className="narrative-footer">
         <p>This narrative provides a comprehensive, human-readable story of the byte's complete journey through the IBM FlashSystem infrastructure.</p>
       </div>
-    </div>
+    </Tile>
   );
 };
 

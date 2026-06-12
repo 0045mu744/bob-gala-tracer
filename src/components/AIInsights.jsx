@@ -1,10 +1,11 @@
 import React from 'react';
+import { Tile } from '@carbon/react';
 import { WatsonHealth3DCursor, Light } from '@carbon/icons-react';
 import './AIInsights.scss';
 
 const AIInsights = ({ insights }) => {
   return (
-    <div className="ai-insights">
+    <Tile className="ai-insights">
       <div className="insights-header">
         <WatsonHealth3DCursor size={24} />
         <h3>IBM Bob AI Analysis</h3>
@@ -32,7 +33,7 @@ const AIInsights = ({ insights }) => {
           </p>
         </div>
       </div>
-    </div>
+    </Tile>
   );
 };
 

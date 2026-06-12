@@ -1,87 +1,79 @@
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/breakpoint' as *;
+
 .final-narrative {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  padding: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: $spacing-06;
 
   .narrative-header {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #e0e0e0;
+    gap: $spacing-04;
+    margin-bottom: $spacing-06;
+    padding-bottom: $spacing-05;
+    border-bottom: 1px solid $border-subtle;
 
     svg {
-      color: #0f62fe;
+      color: $icon-primary;
     }
 
     h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #161616;
+      @include type-style('heading-compact-02');
+      color: $text-primary;
       margin: 0;
     }
   }
 
   .narrative-content {
-    background: #f4f4f4;
-    padding: 2rem;
-    border-radius: 4px;
-    border-left: 4px solid #0f62fe;
-    margin-bottom: 1.5rem;
+    margin-bottom: $spacing-06;
 
     .narrative-text {
+      background: $layer-01;
+      padding: $spacing-06;
+      border-radius: 4px;
+      border-left: 3px solid $border-interactive;
+
       p {
-        font-size: 0.9375rem;
+        @include type-style('body-long-01');
+        color: $text-primary;
         line-height: 1.8;
-        color: #161616;
-        margin: 0 0 1.5rem 0;
-        text-align: justify;
+        margin: 0 0 $spacing-05 0;
 
         &:last-child {
           margin-bottom: 0;
         }
 
-        &:first-child::first-letter {
-          font-size: 2.5rem;
-          font-weight: 700;
-          color: #0f62fe;
-          float: left;
-          line-height: 1;
-          margin: 0.1rem 0.5rem 0 0;
+        &:first-letter {
+          font-size: 1.5em;
+          font-weight: 600;
+          color: $text-primary;
         }
       }
     }
   }
 
   .narrative-footer {
-    background: #edf5ff;
-    padding: 1rem;
+    background: $notification-background-success;
+    padding: $spacing-05;
     border-radius: 4px;
-    border-left: 3px solid #0f62fe;
+    border-left: 3px solid $support-success;
 
     p {
+      @include type-style('body-compact-01');
+      color: $text-primary;
       margin: 0;
-      font-size: 0.75rem;
-      color: #525252;
+      line-height: 1.6;
       font-style: italic;
     }
   }
 }
 
-@media (max-width: 768px) {
+@include breakpoint-down(md) {
   .final-narrative {
-    padding: 1rem;
-
     .narrative-content {
-      padding: 1rem;
-
       .narrative-text {
-        p {
-          text-align: left;
-        }
+        padding: $spacing-05;
       }
     }
   }

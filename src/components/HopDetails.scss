@@ -1,9 +1,10 @@
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/breakpoint' as *;
+
 .hop-details {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  padding: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: $spacing-06;
 
   &.empty {
     display: flex;
@@ -13,14 +14,14 @@
 
     .empty-state {
       text-align: center;
-      color: #8d8d8d;
+      color: $text-secondary;
 
       svg {
-        margin-bottom: 1rem;
+        margin-bottom: $spacing-05;
       }
 
       p {
-        font-size: 1rem;
+        @include type-style('body-short-01');
         margin: 0;
       }
     }
@@ -29,26 +30,14 @@
   .hop-details-header {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #e0e0e0;
-
-    .hop-badge {
-      background: #0f62fe;
-      color: #ffffff;
-      padding: 0.25rem 0.75rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+    gap: $spacing-05;
+    margin-bottom: $spacing-06;
+    padding-bottom: $spacing-05;
+    border-bottom: 1px solid $border-subtle;
 
     h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #161616;
+      @include type-style('heading-compact-02');
+      color: $text-primary;
       margin: 0;
     }
   }
@@ -56,49 +45,30 @@
   .hop-details-content {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: $spacing-06;
 
     .detail-section {
       label {
+        @include type-style('label-01');
         display: block;
-        font-size: 0.75rem;
         font-weight: 600;
-        color: #525252;
+        color: $text-secondary;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        margin-bottom: 0.5rem;
+        margin-bottom: $spacing-03;
       }
 
       .detail-value {
-        font-size: 0.875rem;
-        color: #161616;
+        @include type-style('body-compact-01');
+        color: $text-primary;
         line-height: 1.5;
 
         &.component-path {
           font-family: 'IBM Plex Mono', monospace;
-          background: #f4f4f4;
-          padding: 0.75rem;
+          background: $layer-01;
+          padding: $spacing-04;
           border-radius: 4px;
-          border-left: 3px solid #0f62fe;
-        }
-
-        &.operation {
-          display: inline-block;
-          background: #edf5ff;
-          color: #0f62fe;
-          padding: 0.5rem 1rem;
-          border-radius: 4px;
-          font-weight: 600;
-        }
-
-        &.latency {
-          display: inline-block;
-          background: #defbe6;
-          color: #24a148;
-          padding: 0.5rem 1rem;
-          border-radius: 4px;
-          font-weight: 600;
-          font-size: 1rem;
+          border-left: 3px solid $border-interactive;
         }
       }
     }
@@ -106,23 +76,23 @@
     .detail-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: $spacing-05;
     }
 
     .reasoning {
       .reasoning-text {
         display: flex;
         align-items: flex-start;
-        gap: 0.5rem;
-        background: #fff8e1;
-        padding: 1rem;
+        gap: $spacing-03;
+        background: $notification-background-warning;
+        padding: $spacing-05;
         border-radius: 4px;
-        border-left: 3px solid #f1c21b;
+        border-left: 3px solid $support-warning;
 
         svg {
           flex-shrink: 0;
           margin-top: 0.125rem;
-          color: #f1c21b;
+          color: $support-warning;
         }
 
         span {
@@ -133,10 +103,8 @@
   }
 }
 
-@media (max-width: 768px) {
+@include breakpoint-down(md) {
   .hop-details {
-    padding: 1rem;
-
     .hop-details-content {
       .detail-grid {
         grid-template-columns: 1fr;

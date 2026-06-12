@@ -1,26 +1,26 @@
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/breakpoint' as *;
+
 .latency-breakdown {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  padding: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: $spacing-06;
 
   .breakdown-header {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #e0e0e0;
+    gap: $spacing-04;
+    margin-bottom: $spacing-06;
+    padding-bottom: $spacing-05;
+    border-bottom: 1px solid $border-subtle;
 
     svg {
-      color: #0f62fe;
+      color: $icon-primary;
     }
 
     h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #161616;
+      @include type-style('heading-compact-02');
+      color: $text-primary;
       margin: 0;
     }
   }
@@ -29,19 +29,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(135deg, #0f62fe 0%, #8a3ffc 100%);
-    color: #ffffff;
-    padding: 1.5rem;
+    background: linear-gradient(135deg, $blue-60 0%, $purple-60 100%);
+    color: $text-on-color;
+    padding: $spacing-06;
     border-radius: 8px;
-    margin-bottom: 2rem;
+    margin-bottom: $spacing-07;
 
     .label {
-      font-size: 1rem;
+      @include type-style('body-short-02');
       font-weight: 400;
     }
 
     .value {
-      font-size: 2rem;
+      @include type-style('heading-04');
       font-weight: 700;
     }
   }
@@ -49,86 +49,72 @@
   .breakdown-chart {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    gap: $spacing-06;
+    margin-bottom: $spacing-07;
 
     .breakdown-item {
       .item-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 0.5rem;
+        margin-bottom: $spacing-03;
 
         .item-label {
-          font-size: 0.875rem;
+          @include type-style('body-compact-01');
           font-weight: 600;
-          color: #161616;
+          color: $text-primary;
         }
 
         .item-value {
-          font-size: 0.875rem;
+          @include type-style('body-compact-01');
           font-weight: 600;
-          color: #525252;
+          color: $text-secondary;
         }
       }
 
-      .item-bar-container {
-        width: 100%;
-        height: 24px;
-        background: #f4f4f4;
-        border-radius: 4px;
-        overflow: hidden;
-        position: relative;
+      // Custom progress bar colors
+      .progress-blue {
+        --cds-progress-bar-color: #{$blue-60};
+      }
 
-        .item-bar {
-          height: 100%;
-          border-radius: 4px;
-          transition: width 0.5s ease;
-          position: relative;
+      .progress-purple {
+        --cds-progress-bar-color: #{$purple-60};
+      }
 
-          &::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-              90deg,
-              rgba(255, 255, 255, 0) 0%,
-              rgba(255, 255, 255, 0.3) 50%,
-              rgba(255, 255, 255, 0) 100%
-            );
-            animation: shimmer 2s infinite;
-          }
-        }
+      .progress-cyan {
+        --cds-progress-bar-color: #{$cyan-50};
+      }
+
+      .progress-green {
+        --cds-progress-bar-color: #{$green-50};
+      }
+
+      .progress-red {
+        --cds-progress-bar-color: #{$red-60};
       }
     }
   }
 
   .breakdown-insights {
-    background: #f4f4f4;
-    padding: 1.5rem;
-    border-radius: 4px;
-    border-left: 3px solid #0f62fe;
+    background: $layer-01;
+    border-left: 3px solid $border-interactive;
 
     h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #161616;
-      margin: 0 0 1rem 0;
+      @include type-style('heading-compact-01');
+      color: $text-primary;
+      margin: 0 0 $spacing-05 0;
     }
 
     ul {
       margin: 0;
-      padding-left: 1.5rem;
+      padding-left: $spacing-06;
       list-style-type: disc;
 
       li {
-        font-size: 0.875rem;
-        color: #525252;
+        @include type-style('body-compact-01');
+        color: $text-secondary;
         line-height: 1.6;
-        margin-bottom: 0.5rem;
+        margin-bottom: $spacing-03;
 
         &:last-child {
           margin-bottom: 0;
@@ -138,26 +124,15 @@
   }
 }
 
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@media (max-width: 768px) {
+@include breakpoint-down(md) {
   .latency-breakdown {
-    padding: 1rem;
-
     .total-latency {
       flex-direction: column;
-      gap: 0.5rem;
+      gap: $spacing-03;
       text-align: center;
 
       .value {
-        font-size: 1.5rem;
+        @include type-style('heading-03');
       }
     }
   }

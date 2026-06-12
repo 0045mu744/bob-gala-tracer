@@ -1,23 +1,24 @@
 import React from 'react';
+import { Tile, Tag } from '@carbon/react';
 import { Information } from '@carbon/icons-react';
 import './HopDetails.scss';
 
 const HopDetails = ({ hop, hopIndex }) => {
   if (!hop) {
     return (
-      <div className="hop-details empty">
+      <Tile className="hop-details empty">
         <div className="empty-state">
           <Information size={32} />
           <p>Click "Start Simulation" to begin the I/O journey</p>
         </div>
-      </div>
+      </Tile>
     );
   }
 
   return (
-    <div className="hop-details">
+    <Tile className="hop-details">
       <div className="hop-details-header">
-        <div className="hop-badge">Hop {hopIndex + 1}</div>
+        <Tag type="blue" size="md">Hop {hopIndex + 1}</Tag>
         <h3>{hop.title}</h3>
       </div>
 
@@ -35,12 +36,12 @@ const HopDetails = ({ hop, hopIndex }) => {
         <div className="detail-grid">
           <div className="detail-section">
             <label>Operation</label>
-            <div className="detail-value operation">{hop.operation}</div>
+            <Tag type="cyan" size="md" className="operation-tag">{hop.operation}</Tag>
           </div>
 
           <div className="detail-section">
             <label>Latency</label>
-            <div className="detail-value latency">{hop.latency_ms}ms</div>
+            <Tag type="green" size="md" className="latency-tag">{hop.latency_ms}ms</Tag>
           </div>
         </div>
 
@@ -52,7 +53,7 @@ const HopDetails = ({ hop, hopIndex }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Tile>
   );
 };
 
