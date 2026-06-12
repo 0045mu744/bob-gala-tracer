@@ -47,6 +47,14 @@ body {
         opacity: 0.9;
         color: $text-on-color;
       }
+
+      .build-time {
+        @include type-style('label-01');
+        color: $text-on-color;
+        margin: $spacing-03 0 0 0;
+        font-style: italic;
+        opacity: 0.8;
+      }
     }
 
     .header-actions {

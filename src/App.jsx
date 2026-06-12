@@ -14,6 +14,11 @@ function App() {
   const [currentHop, setCurrentHop] = useState(-1);
   const [isAnimating, setIsAnimating] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const buildTime = new Date().toLocaleString('en-US', {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+    timeZone: 'Asia/Calcutta'
+  });
 
   useEffect(() => {
     // Initialize simulation data
@@ -75,6 +80,7 @@ function App() {
           <div className="header-content">
             <h1>Byte Tracer</h1>
             <p className="subtitle">IBM FlashSystem I/O Journey Simulator</p>
+            <p className="build-time">Build: {buildTime}</p>
           </div>
           <div className="header-actions">
             <Button
